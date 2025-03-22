@@ -30,7 +30,7 @@ Bu proje, bir metro ağındaki istasyonlar arasındaki en hızlı ve en az aktar
 
 ### Örnek Kullanım ve Test Sonuçları
 **BFS**
-'''
+```python
 def en_az_aktarma_bul(self, baslangic_id: str, hedef_id: str) -> Optional[List[Istasyon]]:
         # Başlangıç ve hedef istasyonların istasyonlar içerisinde mevcut olup olmadığı kontrolü
         if baslangic_id not in self.istasyonlar or hedef_id not in self.istasyonlar:
@@ -61,9 +61,10 @@ def en_az_aktarma_bul(self, baslangic_id: str, hedef_id: str) -> Optional[List[I
                 if komsu not in ziyaret_edildi:
                     kuyruk.append((komsu, yol + [komsu])) # Bu istasyon yeni yol ile kuyruğa eklenir
 
-        return None 
+        return None
+```
 ***A****
-'''
+```python
 def en_hizli_rota_bul(self, baslangic_id: str, hedef_id: str) -> Optional[Tuple[List[Istasyon], int]]:
         if baslangic_id not in self.istasyonlar or hedef_id not in self.istasyonlar:
             return None
@@ -94,14 +95,15 @@ def en_hizli_rota_bul(self, baslangic_id: str, hedef_id: str) -> Optional[Tuple[
                     heapq.heappush(pq, (yeni_sure, id(komsu), komsu, yol + [komsu]))
 
         return None
-
+```
 - **Test Sonuçları**
-'''
+```python
 rota = metro.en_az_aktarma_bul("M1", "K4")
 print("En az aktarmalı rota:", " -> ".join(i.ad for i in rota))
 
 sonuc = metro.en_hizli_rota_bul("M1", "K4")
 print(f"En hızlı rota ({sure} dakika):", " -> ".join(i.ad for i in rota))
+```
 
 - **En az aktarmalı rota**: AŞTİ -> Kızılay -> Ulus -> Demetevler -> OSB
 - **En hızlı rota (20 dakika)**: AŞTİ -> Kızılay -> Demetevler -> OSB
